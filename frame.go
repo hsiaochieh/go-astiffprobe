@@ -11,6 +11,7 @@ type Frame struct {
 	// frame timestamp estimated using various heuristics
 	BestEffortTimestamp     int      `json:"best_effort_timestamp"`
 	BestEffortTimestampTime Duration `json:"best_effort_timestamp_time"`
+	ChromaLocation          string   `json:"chroma_location"`
 	// picture number in bitstream order
 	CodedPictureNumber   int    `json:"coded_picture_number"`
 	DisplayPictureNumber int    `json:"display_picture_number"`
@@ -29,10 +30,12 @@ type Frame struct {
 	// reordered pos from the last AVPacket that has been input into the decoder
 	PktPos int `json:"pkt_pos,string"`
 	// PTS copied from the AVPacket that was decoded to produce this frame
-	PktPts     int      `json:"pkt_pts"`
-	PktPtsTime Duration `json:"pkt_pts_time"`
+	PktPts     int      `json:"pkt_pts"`      // Deprecated in ffmpeg 5+, use Pts instead
+	PktPtsTime Duration `json:"pkt_pts_time"` // Deprecated in ffmpeg 5+, use PtsTime instead
 	// size of the corresponding packet containing the compressed frame
 	PktSize           int      `json:"pkt_size,string"`
+	Pts               int      `json:"pts"`
+	PtsTime           Duration `json:"pts_time"`
 	RepeatPict        Bool     `json:"repeat_pict"`
 	SampleAspectRatio Rational `json:"sample_aspect_ratio"`
 	StreamIndex       int      `json:"stream_index"`

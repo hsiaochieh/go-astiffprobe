@@ -1,5 +1,5 @@
 module github.com/asticode/go-astiffprobe
 
-go 1.16
+go 1.24
 
-require github.com/asticode/go-astikit v0.20.0
+require github.com/asticode/go-astikit v0.52.0
